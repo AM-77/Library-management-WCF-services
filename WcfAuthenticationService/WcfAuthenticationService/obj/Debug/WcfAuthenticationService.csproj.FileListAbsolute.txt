@@ -1,0 +1,15 @@
+C:\Users\deric\OneDrive\Documents\Visual Studio 2017\Projects\project\WcfAuthenticationService\WcfAuthenticationService\bin\WcfAuthenticationService.dll.config
+C:\Users\deric\OneDrive\Documents\Visual Studio 2017\Projects\project\WcfAuthenticationService\WcfAuthenticationService\bin\WcfAuthenticationService.dll
+C:\Users\deric\OneDrive\Documents\Visual Studio 2017\Projects\project\WcfAuthenticationService\WcfAuthenticationService\bin\WcfAuthenticationService.pdb
+C:\Users\deric\OneDrive\Documents\Visual Studio 2017\Projects\project\WcfAuthenticationService\WcfAuthenticationService\bin\MySql.Data.xml
+C:\Users\deric\OneDrive\Documents\Visual Studio 2017\Projects\project\WcfAuthenticationService\WcfAuthenticationService\obj\Debug\WcfAuthenticationService.csprojResolveAssemblyReference.cache
+C:\Users\deric\OneDrive\Documents\Visual Studio 2017\Projects\project\WcfAuthenticationService\WcfAuthenticationService\obj\Debug\WcfAuthenticationService.dll
+C:\Users\deric\OneDrive\Documents\Visual Studio 2017\Projects\project\WcfAuthenticationService\WcfAuthenticationService\obj\Debug\WcfAuthenticationService.pdb
+C:\Users\do\Documents\Visual Studio 2015\Projects\WcfAuthenticationService\WcfAuthenticationService\bin\WcfAuthenticationService.dll.config
+C:\Users\do\Documents\Visual Studio 2015\Projects\WcfAuthenticationService\WcfAuthenticationService\bin\WcfAuthenticationService.dll
+C:\Users\do\Documents\Visual Studio 2015\Projects\WcfAuthenticationService\WcfAuthenticationService\bin\WcfAuthenticationService.pdb
+C:\Users\do\Documents\Visual Studio 2015\Projects\WcfAuthenticationService\WcfAuthenticationService\bin\MySql.Data.dll
+C:\Users\do\Documents\Visual Studio 2015\Projects\WcfAuthenticationService\WcfAuthenticationService\bin\MySql.Data.xml
+C:\Users\do\Documents\Visual Studio 2015\Projects\WcfAuthenticationService\WcfAuthenticationService\obj\Debug\WcfAuthenticationService.dll
+C:\Users\do\Documents\Visual Studio 2015\Projects\WcfAuthenticationService\WcfAuthenticationService\obj\Debug\WcfAuthenticationService.pdb
+C:\Users\do\Documents\Visual Studio 2015\Projects\WcfAuthenticationService\WcfAuthenticationService\obj\Debug\WcfAuthenticationService.csprojResolveAssemblyReference.cache
