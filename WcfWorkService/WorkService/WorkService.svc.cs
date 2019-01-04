@@ -188,6 +188,158 @@ namespace WorkService
 
             return work;
         }
+        
+        public bool reserve_work(int id_work, string id_client)
+        {
+            Work work = get_work(id_work);
+            if(work != null)
+            {
+                if (work.reserved == 0)
+                {
+                    String new_waitting_list = "";
+                    Reservation resrvation = get_reservation(id_work);
+                    if (resrvation != null && !resrvation.waitting_list.Trim().Equals(""))
+                    {
+                        Char[] chars = { ' ' };
+                        String[] waitting_list = resrvation.waitting_list.Split(chars);
+                        List<String> waitting_array = waitting_list.ToList<String>();
+
+                        foreach (String waitting_person in waitting_array)
+                        {
+
+                            if (is_student(waitting_person) && !is_blocked_student(waitting_person))
+                            {
+                                if (!id_client.Equals(get_student(waitting_person).id))
+                                {
+                                    if (new_waitting_list.Equals(""))
+                                    {
+                                        new_waitting_list = "" + waitting_person;
+                                    }
+                                    else
+                                    {
+                                        Char[] chars_student = { ' ' };
+                                        String[] waitting_list_student = resrvation.waitting_list.Split(chars);
+                                        List<String> waitting_array_student = waitting_list_student.ToList<String>();
+                                        if (waitting_array_student.Contains(id_client))
+                                        {
+                                            foreach(String waitting_student in waitting_array_student)
+                                            {
+                                                if (!waitting_student.Equals(id_client))
+                                                {
+                                                    new_waitting_list = new_waitting_list + " " + waitting_student;
+                                                }
+                                            }
+                                        }
+                                        else
+                                        {
+                                            new_waitting_list = resrvation.waitting_list;
+                                        }
+                                            
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                if (is_teacher(waitting_person) && !is_blocked_teacher(waitting_person))
+                                {
+
+                                    
+
+                                    if (!id_client.Equals(get_teacher(waitting_person).id))
+                                    {
+                                        if (new_waitting_list.Equals(""))
+                                        {
+                                            new_waitting_list = "" + waitting_person;
+                                        }
+                                        else
+                                        {
+
+                                            Char[] chars_teacher = { ' ' };
+                                            String[] waitting_list_teacher = resrvation.waitting_list.Split(chars);
+                                            List<String> waitting_array_teacher = waitting_list_teacher.ToList<String>();
+                                            if (waitting_array_teacher.Contains(id_client))
+                                            {
+                                                foreach (String waitting_teacher in waitting_array_teacher)
+                                                {
+                                                    if (!waitting_teacher.Equals(id_client))
+                                                    {
+                                                        new_waitting_list = new_waitting_list + " " + waitting_teacher;
+                                                    }
+                                                }
+                                            }
+                                            else
+                                            {
+                                                new_waitting_list = resrvation.waitting_list;
+                                            }
+
+                                        }
+                                    }
+                                }
+                            }
+
+                        }
+                    }
+
+
+                    MySqlConnection connection = db_manager.connect();
+                    string query1 = "UPDATE `work` SET `reserved` = '1' WHERE `work`.`id` = " + id_work + ";";
+                    var cmd1 = new MySqlCommand(query1, connection);
+                    cmd1.ExecuteNonQuery();
+
+                    string query_delete_old_reservation = "DELETE FROM `reservation` WHERE `reservation`.`id_work` = '" + work.id + "' ;";
+                    var cmd_delete_old_reservation = new MySqlCommand(query_delete_old_reservation, connection);
+                    cmd_delete_old_reservation.ExecuteNonQuery();
+
+                    string query2 = "INSERT INTO `reservation` (`id`, `id_work`, `id_client`, `waitting_list`, `borrowing_day`, `confirmed`) VALUES(NULL, '" + id_work+"', '"+id_client+ "', '"+ new_waitting_list +"', CURRENT_TIMESTAMP, 0);";
+                    var cmd2 = new MySqlCommand(query2, connection);
+                    cmd2.ExecuteNonQuery();
+
+                    db_manager.close();
+
+                    return true;
+                }
+                else
+                {
+
+                    System.Diagnostics.Debug.WriteLine("inside reserved == 1");
+
+                    Reservation reservation = get_reservation(id_work);
+                    String waitting_list = "";
+
+
+                    if (reservation.waitting_list.Equals(""))
+                    {
+                        waitting_list = id_client + "";
+                    }
+                    else
+                    {
+                       
+                        Char[] chars = { ' ' };
+                        String[] waitting_list_client = reservation.waitting_list.Split(chars);
+                        List<String> waitting_array_client = waitting_list_client.ToList<String>();
+                        if(!waitting_array_client.Contains(id_client))
+                            waitting_list = reservation.waitting_list + " " + id_client;
+                        else
+                            waitting_list = reservation.waitting_list;
+
+                    }
+
+
+                    MySqlConnection connection = db_manager.connect();
+
+                    string query = "UPDATE `reservation` SET `waitting_list` = '" + waitting_list + "' WHERE `reservation`.`id_work` = " + id_work + ";";
+                    var cmd = new MySqlCommand(query, connection);
+                    cmd.ExecuteNonQuery();
+
+                    db_manager.close();
+
+                }
+
+                
+            }
+
+            return true;
+        }
 
     }   
 }
