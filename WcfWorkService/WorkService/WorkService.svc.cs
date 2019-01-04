@@ -361,6 +361,24 @@ namespace WorkService
 
             return reservation;
         }
+        
+        public bool update_work(int id_work, string title, string author, string theme, string keywords, string barecode, string type, int reserved)
+        {
+
+            MySqlConnection connection = db_manager.connect();
+
+            string query = "UPDATE `work` SET `title` = '" + title + "', `author` = '" + author + "', `theme` = '" + theme + "', `keywords` = '" + keywords + "', `barecode` = '" + barecode + "', `type` = '" + type + "', `reserved` = " + reserved + " WHERE `work`.`id` = " + id_work + ";";
+            var cmd = new MySqlCommand(query, connection);
+            int res = cmd.ExecuteNonQuery();
+
+            db_manager.close();
+
+            if (res == -1)
+                return false;
+            else
+                return true;
+
+        }
 
     }   
 }
