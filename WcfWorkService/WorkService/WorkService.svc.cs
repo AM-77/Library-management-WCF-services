@@ -379,6 +379,141 @@ namespace WorkService
                 return true;
 
         }
+        
+        // Test if the student is blocked or not using its id
+        public bool is_blocked_student(string id_student)
+        {
+
+            MySqlConnection connection = db_manager.connect();
+
+            string query = "SELECT * FROM blocked WHERE id_client = '" + id_student + "' ;";
+            var cmd = new MySqlCommand(query, connection);
+            var reader = cmd.ExecuteReader();
+
+            while (reader.Read() && reader != null)
+            {
+
+                if (reader["id_client"].Equals(id_student))
+                {
+                    db_manager.close();
+                    return true;
+                }
+            }
+
+            db_manager.close();
+            return false;
+        }
+
+        // Test if the teacher is blocked or not using its id
+        public bool is_blocked_teacher(string id_teacher)
+        {
+            MySqlConnection connection = db_manager.connect();
+
+            string query = "SELECT * FROM blocked WHERE id_client = '" + id_teacher + "' ;";
+            var cmd = new MySqlCommand(query, connection);
+            var reader = cmd.ExecuteReader();
+
+            while (reader.Read() && reader != null)
+            {
+                if (reader["id_client"].Equals(id_teacher))
+                {
+                    db_manager.close();
+                    return true;
+                }
+            }
+
+            db_manager.close();
+            return false;
+        }
+
+        // Test if the id is a student id
+        public bool is_student(string id_student)
+        {
+            MySqlConnection connection = db_manager.connect();
+
+            string query = "SELECT * FROM student ;";
+            var cmd = new MySqlCommand(query, connection);
+            var reader = cmd.ExecuteReader();
+
+            while (reader.Read() && reader != null)
+            {
+                if (reader.GetString(0).Equals(id_student))
+                {
+                    db_manager.close();
+                    return true;
+                }
+            }
+
+            db_manager.close();
+            return false;
+        }
+
+        // Test if the id is a teacher id
+        public bool is_teacher(string id_teacher)
+        {
+            MySqlConnection connection = db_manager.connect();
+
+            string query = "SELECT * FROM teacher ;";
+            var cmd = new MySqlCommand(query, connection);
+            var reader = cmd.ExecuteReader();
+
+            while (reader.Read() && reader != null)
+            {
+                if (reader["id"].Equals(id_teacher))
+                {
+                    db_manager.close();
+                    return true;
+                }
+            }
+
+            db_manager.close();
+            return false;
+        }
+
+        // Return a teacher from the database using its id if exists, returns null if not. 
+        public Teacher get_teacher(string id)
+        {
+            Teacher teacher = null;
+
+            MySqlConnection connection = db_manager.connect();
+
+            string query = "SELECT * FROM `teacher` WHERE id='" + id + "';";
+            var cmd = new MySqlCommand(query, connection);
+            var reader = cmd.ExecuteReader();
+
+            while (reader.Read() && reader != null)
+            {
+                teacher = (new Teacher(reader.GetString(0), reader.GetString(1), reader.GetString(2), reader.GetString(3), reader.GetString(4), reader.GetString(5), reader.GetInt32(6)));
+            }
+
+            db_manager.close();
+
+
+            return teacher;
+        }
+
+
+        // Return a student from the database using its id if exists, returns null if not. 
+        public Student get_student(string id)
+        {
+            Student student = null;
+
+            MySqlConnection connection = db_manager.connect();
+
+            string query = "SELECT * FROM `student` WHERE id='" + id + "';";
+            var cmd = new MySqlCommand(query, connection);
+            var reader = cmd.ExecuteReader();
+
+            while (reader.Read() && reader != null)
+            {
+                student = (new Student(reader.GetString(0), reader.GetString(1), reader.GetString(2), reader.GetString(3), reader.GetString(4), reader.GetString(5), reader.GetString(6), reader.GetInt32(7)));
+            }
+
+            db_manager.close();
+
+
+            return student;
+        }
 
     }   
 }
