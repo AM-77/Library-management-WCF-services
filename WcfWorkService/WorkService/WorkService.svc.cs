@@ -32,6 +32,23 @@ namespace WorkService
                 return true;
 
         }
+        
+        // La suppression d une ouvrage de la base de donnees
+        public bool delete_work(int id_work)
+        {
+            MySqlConnection connection = db_manager.connect();
+
+            string query = "DELETE FROM `work` WHERE `id` = '" + id_work + "' ;";
+            var cmd = new MySqlCommand(query, connection);
+            int res = cmd.ExecuteNonQuery();
+
+            db_manager.close();
+
+            if (res == -1)
+                return false;
+            else
+                return true;
+        }
 
     }   
 }
