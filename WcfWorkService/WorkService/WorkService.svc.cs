@@ -106,6 +106,88 @@ namespace WorkService
             else
                 return true;
         }
+        
+        public List<Work> get_all_works()
+        {
+            List<Work> all_works = new List<Work>();
+            MySqlConnection connection = db_manager.connect();
+
+            string query = "SELECT * FROM work ;";
+            var cmd = new MySqlCommand(query, connection);
+            var reader = cmd.ExecuteReader();
+
+            while (reader.Read() && reader != null)
+            {
+                all_works.Add(new Work(reader.GetInt32(0), reader.GetString(1), reader.GetString(2), reader.GetString(3), reader.GetString(4), reader.GetString(5), reader.GetString(6), reader.GetInt32(0)));
+            }
+
+            db_manager.close();
+
+
+            return all_works;
+        }
+
+        public List<Work> get_works(string title, string author, string theme, string keywords, string barecode, string type)
+        {
+            List<Work> works = new List<Work>();
+            MySqlConnection connection = db_manager.connect();
+
+            string query = "SELECT * FROM `work` WHERE title LIKE '%"+ title +"%' AND author LIKE '%"+ author + "%' AND theme LIKE '%"+ theme + "%' AND keywords LIKE '%"+ keywords + "%' AND barecode LIKE '%"+ barecode + "%' AND type LIKE '%"+ type + "%'  ;";
+            var cmd = new MySqlCommand(query, connection);
+            var reader = cmd.ExecuteReader();
+
+            while (reader.Read() && reader != null)
+            {
+                works.Add(new Work(reader.GetInt32(0), reader.GetString(1), reader.GetString(2), reader.GetString(3), reader.GetString(4), reader.GetString(5), reader.GetString(6), reader.GetInt32(0)));
+            }
+
+            db_manager.close();
+
+
+            return works;
+        }
+
+        public Work get_work_by_barecode(string barecode)
+        {
+            Work work = null;
+
+            MySqlConnection connection = db_manager.connect();
+
+            string query = "SELECT * FROM `work` WHERE barecode='" + barecode + "';";
+            var cmd = new MySqlCommand(query, connection);
+            var reader = cmd.ExecuteReader();
+
+            while (reader.Read() && reader != null)
+            {
+                work = (new Work(reader.GetInt32(0), reader.GetString(1), reader.GetString(2), reader.GetString(3), reader.GetString(4), reader.GetString(5), reader.GetString(6), reader.GetInt32(7)));
+            }
+
+            db_manager.close();
+
+
+            return work;
+        }
+
+        public Work get_work(int id_work)
+        {
+            Work work = null;
+
+            MySqlConnection connection = db_manager.connect();
+
+            string query = "SELECT * FROM `work` WHERE id=" + id_work + ";";
+            var cmd = new MySqlCommand(query, connection);
+            var reader = cmd.ExecuteReader();
+
+            while (reader.Read() && reader != null)
+            {
+                work = (new Work(reader.GetInt32(0), reader.GetString(1), reader.GetString(2), reader.GetString(3), reader.GetString(4), reader.GetString(5), reader.GetString(6), reader.GetInt32(7)));
+            }
+
+            db_manager.close();
+
+
+            return work;
+        }
 
     }   
 }
