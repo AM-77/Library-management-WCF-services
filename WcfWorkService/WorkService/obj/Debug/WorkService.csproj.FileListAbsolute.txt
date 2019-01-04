@@ -1,0 +1,15 @@
+C:\Users\deric\OneDrive\Documents\Visual Studio 2017\Projects\project\WcfWorkService\WorkService\bin\WorkService.dll.config
+C:\Users\deric\OneDrive\Documents\Visual Studio 2017\Projects\project\WcfWorkService\WorkService\bin\WorkService.dll
+C:\Users\deric\OneDrive\Documents\Visual Studio 2017\Projects\project\WcfWorkService\WorkService\bin\WorkService.pdb
+C:\Users\deric\OneDrive\Documents\Visual Studio 2017\Projects\project\WcfWorkService\WorkService\bin\MySql.Data.xml
+C:\Users\deric\OneDrive\Documents\Visual Studio 2017\Projects\project\WcfWorkService\WorkService\obj\Debug\WorkService.csprojResolveAssemblyReference.cache
+C:\Users\deric\OneDrive\Documents\Visual Studio 2017\Projects\project\WcfWorkService\WorkService\obj\Debug\WorkService.dll
+C:\Users\deric\OneDrive\Documents\Visual Studio 2017\Projects\project\WcfWorkService\WorkService\obj\Debug\WorkService.pdb
+C:\Users\do\Documents\Visual Studio 2015\Projects\WcfWorkService\WorkService\bin\WorkService.dll.config
+C:\Users\do\Documents\Visual Studio 2015\Projects\WcfWorkService\WorkService\bin\WorkService.dll
+C:\Users\do\Documents\Visual Studio 2015\Projects\WcfWorkService\WorkService\bin\WorkService.pdb
+C:\Users\do\Documents\Visual Studio 2015\Projects\WcfWorkService\WorkService\bin\MySql.Data.dll
+C:\Users\do\Documents\Visual Studio 2015\Projects\WcfWorkService\WorkService\bin\MySql.Data.xml
+C:\Users\do\Documents\Visual Studio 2015\Projects\WcfWorkService\WorkService\obj\Debug\WorkService.dll
+C:\Users\do\Documents\Visual Studio 2015\Projects\WcfWorkService\WorkService\obj\Debug\WorkService.pdb
+C:\Users\do\Documents\Visual Studio 2015\Projects\WcfWorkService\WorkService\obj\Debug\WorkService.csprojResolveAssemblyReference.cache
