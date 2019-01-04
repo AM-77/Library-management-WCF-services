@@ -49,6 +49,63 @@ namespace WorkService
             else
                 return true;
         }
+        
+        // La rende d une ouvrage 
+        public bool free_work(int id_work)
+        {
+            MySqlConnection connection = db_manager.connect();
+
+            string query = "UPDATE `work` SET `reserved` = '0' WHERE `work`.`id` = " + id_work + ";";
+            var cmd = new MySqlCommand(query, connection);
+            int res = cmd.ExecuteNonQuery();
+
+            db_manager.close();
+
+            Work work = get_work(id_work);
+
+            Reservation resrvation = get_reservation(id_work);
+
+            if(!resrvation.waitting_list.Equals(""))
+            {
+
+                Char[] chars = { ' ' };
+                String[] waitting_list = resrvation.waitting_list.Split(chars);
+                List<String> waitting_array = waitting_list.ToList<String>();
+                String email = "";
+                foreach (String waitting_person in waitting_array)
+                {
+                                       
+                    if (is_student(waitting_person) && !is_blocked_student(waitting_person))
+                    {
+                        email = get_student(waitting_person).email;
+                    }
+                    else
+                    {
+                        if(is_teacher(waitting_person) && !is_blocked_teacher(waitting_person))
+                        {
+                            email = get_teacher(waitting_person).email;
+                        }
+                    }
+
+          /*          // sending an email
+                    MailMessage mail = new MailMessage("library@univ-constantine2.dz", email);
+                    SmtpClient client = new SmtpClient();
+                    client.Port = 25;
+                    client.DeliveryMethod = SmtpDeliveryMethod.Network;
+                    client.UseDefaultCredentials = false;
+                    client.Host = "smtp.gmail.com";
+                    mail.Subject = "Library's book borowring.";
+                    mail.Body = "The book '" + work.title + "' that you wanted to borrow earlier is now available.";
+                    client.Send(mail);
+                    */
+                }
+            }
+
+            if (res == -1)
+                return false;
+            else
+                return true;
+        }
 
     }   
 }
