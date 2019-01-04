@@ -340,6 +340,27 @@ namespace WorkService
 
             return true;
         }
+        
+        public Reservation get_reservation(int id_work)
+        {
+            Reservation reservation = null;
+
+            MySqlConnection connection = db_manager.connect();
+
+            string query = "SELECT * FROM `reservation` WHERE id_work=" + id_work + ";";
+            var cmd = new MySqlCommand(query, connection);
+            var reader = cmd.ExecuteReader();
+
+            while (reader.Read() && reader != null)
+            {
+                reservation = (new Reservation(reader.GetInt32(0), reader.GetInt32(1), reader.GetString(2), reader.GetString(3), reader.GetDateTime(4), reader.GetInt32(5)));
+            }
+
+            db_manager.close();
+
+
+            return reservation;
+        }
 
     }   
 }
