@@ -1,0 +1,7 @@
+C:\Users\do\Documents\Visual Studio 2015\Projects\WcfLibrarianService\LibrarianService\bin\LibrarianService.dll.config
+C:\Users\do\Documents\Visual Studio 2015\Projects\WcfLibrarianService\LibrarianService\bin\LibrarianService.dll
+C:\Users\do\Documents\Visual Studio 2015\Projects\WcfLibrarianService\LibrarianService\bin\LibrarianService.pdb
+C:\Users\do\Documents\Visual Studio 2015\Projects\WcfLibrarianService\LibrarianService\bin\MySql.Data.dll
+C:\Users\do\Documents\Visual Studio 2015\Projects\WcfLibrarianService\LibrarianService\bin\MySql.Data.xml
+C:\Users\do\Documents\Visual Studio 2015\Projects\WcfLibrarianService\LibrarianService\obj\Debug\LibrarianService.dll
+C:\Users\do\Documents\Visual Studio 2015\Projects\WcfLibrarianService\LibrarianService\obj\Debug\LibrarianService.pdb
