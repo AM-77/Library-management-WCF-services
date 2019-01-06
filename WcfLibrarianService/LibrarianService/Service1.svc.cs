@@ -88,6 +88,94 @@ namespace LibrarianService
 
             return true;
         }
+        
+        public bool is_blocked_student(string id_student)
+        {
+
+            MySqlConnection connection = db_manager.connect();
+
+            string query = "SELECT * FROM blocked WHERE id_client = '" + id_student + "' ;";
+            var cmd = new MySqlCommand(query, connection);
+            var reader = cmd.ExecuteReader();
+
+            while (reader.Read() && reader != null)
+            {
+
+                if (reader["id_client"].Equals(id_student))
+                {
+                    db_manager.close();
+                    return true;
+                }
+            }
+
+            db_manager.close();
+            return false;
+        }
+        // Test if the teacher is blocked or not using its id
+        public bool is_blocked_teacher(string id_teacher)
+        {
+            MySqlConnection connection = db_manager.connect();
+
+            string query = "SELECT * FROM blocked WHERE id_client = '" + id_teacher + "' ;";
+            var cmd = new MySqlCommand(query, connection);
+            var reader = cmd.ExecuteReader();
+
+            while (reader.Read() && reader != null)
+            {
+                if (reader["id_client"].Equals(id_teacher))
+                {
+                    db_manager.close();
+                    return true;
+                }
+            }
+
+            db_manager.close();
+            return false;
+        }
+
+        // Test if the email is a student email
+        public bool is_student(string id_student)
+        {
+            MySqlConnection connection = db_manager.connect();
+
+            string query = "SELECT * FROM student ;";
+            var cmd = new MySqlCommand(query, connection);
+            var reader = cmd.ExecuteReader();
+
+            while (reader.Read() && reader != null)
+            {
+                if (reader["id"].Equals(id_student))
+                {
+                    db_manager.close();
+                    return true;
+                }
+            }
+
+            db_manager.close();
+            return false;
+        }
+
+        // Test if the email is a teacher email
+        public bool is_teacher(string id_teacher)
+        {
+            MySqlConnection connection = db_manager.connect();
+
+            string query = "SELECT * FROM teacher ;";
+            var cmd = new MySqlCommand(query, connection);
+            var reader = cmd.ExecuteReader();
+
+            while (reader.Read() && reader != null)
+            {
+                if (reader["id"].Equals(id_teacher))
+                {
+                    db_manager.close();
+                    return true;
+                }
+            }
+
+            db_manager.close();
+            return false;
+        }
 
     }
 }
