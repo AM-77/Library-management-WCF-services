@@ -40,6 +40,54 @@ namespace LibrarianService
 
             return false;
         }
+        
+        public bool deblock(string id_client)
+        {
+            if (is_student(id_client))
+            {
+                if (is_blocked_student(id_client))
+                {
+                    MySqlConnection connection = db_manager.connect();
+                    string query = "DELETE FROM `blocked` WHERE `blocked`.`id_client` = '"+ id_client +"';";
+                    var cmd = new MySqlCommand(query, connection);
+                    cmd.ExecuteNonQuery();
+                    
+                    string query1 = "UPDATE `student` SET `didnt_show` = '0' WHERE `student`.`id` = '"+ id_client + "';";
+                    var cmd1 = new MySqlCommand(query1, connection);
+                    cmd1.ExecuteNonQuery();
+                    db_manager.close();
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                if (is_teacher(id_client))
+                {
+                    if (is_blocked_teacher(id_client))
+                    {
+                        MySqlConnection connection = db_manager.connect();
+                        string query = "DELETE FROM `blocked` WHERE `blocked`.`id_client` = '" + id_client + "';";
+                        var cmd = new MySqlCommand(query, connection);
+                        cmd.ExecuteNonQuery();
+
+                        string query1 = "UPDATE `teacher` SET `didnt_show` = '0' WHERE `teacher`.`id` = '" + id_client + "';";
+                        var cmd1 = new MySqlCommand(query1, connection);
+                        cmd1.ExecuteNonQuery();
+
+                        db_manager.close();
+                    }
+                }
+                else
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
 
     }
 }
