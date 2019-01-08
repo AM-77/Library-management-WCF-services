@@ -1,0 +1,8 @@
+c:\users\do\documents\visual studio 2015\Projects\WcfSystemService\SystemService\bin\SystemService.dll.config
+c:\users\do\documents\visual studio 2015\Projects\WcfSystemService\SystemService\bin\SystemService.dll
+c:\users\do\documents\visual studio 2015\Projects\WcfSystemService\SystemService\bin\SystemService.pdb
+c:\users\do\documents\visual studio 2015\Projects\WcfSystemService\SystemService\bin\MySql.Data.dll
+c:\users\do\documents\visual studio 2015\Projects\WcfSystemService\SystemService\bin\MySql.Data.xml
+c:\users\do\documents\visual studio 2015\Projects\WcfSystemService\SystemService\obj\Debug\SystemService.csprojResolveAssemblyReference.cache
+c:\users\do\documents\visual studio 2015\Projects\WcfSystemService\SystemService\obj\Debug\SystemService.dll
+c:\users\do\documents\visual studio 2015\Projects\WcfSystemService\SystemService\obj\Debug\SystemService.pdb
